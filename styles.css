@@ -1,10 +1,17 @@
 /*  your css code here. If applicable */
 
-.code-container{
-	display:flex;
-	gap:5px;
+.code {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
-input{
-	width:40px;
-	padding:5px 10px;
+
+.code:focus {
+  outline: none;
+  border-color: dodgerblue; /* Change color as desired */
+  box-shadow: 0 0 5px dodgerblue; /* Change color and intensity as desired */
 }
