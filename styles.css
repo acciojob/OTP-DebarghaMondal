@@ -1,1 +1,10 @@
 /*  your css code here. If applicable */
+
+.code-container{
+	display:flex;
+	gap:5px;
+}
+input{
+	width:40px;
+	padding:5px 10px;
+}
