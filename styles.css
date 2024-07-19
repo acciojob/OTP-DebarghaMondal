@@ -1,4 +1,3 @@
-/*  your css code here. If applicable */
 
 .code {
   width: 40px;
@@ -12,6 +11,6 @@
 
 .code:focus {
   outline: none;
-  border-color: dodgerblue; /* Change color as desired */
-  box-shadow: 0 0 5px dodgerblue; /* Change color and intensity as desired */
+  border-color: dodgerblue; 
+  box-shadow: 0 0 5px dodgerblue;
 }
