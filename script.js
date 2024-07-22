@@ -1,17 +1,30 @@
-let inputElements = Array.from(document.querySelectorAll(".code"));
-
-inputElements.forEach((inputElement, index) => {
-    inputElement.addEventListener("keydown", (event) => {
-        if (event.key === "Backspace" && index > 0) {
-            setTimeout(() => inputElements[index - 1].focus(), 10);
-        }
-    });
-    inputElement.addEventListener("input", (event) => {
-        let code = event.data.charCodeAt(0);
-        if (code >= 48 && code <= 57 && index < inputElements.length - 1) {
-            setTimeout(() => inputElements[index + 1].focus(), 10);
-        } else {
-            event.target.value = "";
-        }
-    });
-});
+//your JS code here. If required.
+let inputElements = document.getElementsByClassName("code");
+console.log(inputElements.length)
+for(let i=0; i< inputElements.length; i++){
+	inputElements[i].addEventListener("keyup", (event)=>{
+		let currentElement = event.target ;
+		let code = event.key.charCodeAt(0);
+		console.log(event.key)
+		if(event.key === "Backspace"){
+			let prevElement = currentElement.previousElementSibling ;
+			if(prevElement){
+				prevElement.focus();
+			}
+			return ;
+		}
+		
+		
+		
+		if(code>=48 && code<=57){
+			let nextElement = currentElement.nextElementSibling ;
+			if(nextElement){
+				nextElement.focus() ;
+			}
+			
+		}else{
+			event.target.value="" ;
+		}
+	})
+	
+}
