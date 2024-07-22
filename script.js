@@ -1,22 +1,27 @@
-let inputElements = Array.from(document.querySelectorAll(".code"));
+//your JS code here. If required.
+const codes = document.querySelectorAll(".code")
 
-inputElements.forEach((inputElement, index) => {
-    inputElement.addEventListener("keydown", (event) => {
-        if (event.key === "Backspace" && index > 0) {
-            setTimeout(() => inputElements[index - 1].focus(), 10);
-        }
-    });
-    inputElement.addEventListener("input", (event) => {
-        let value = event.target.value;
-        if (value.length === 1) {
-            let code = value.charCodeAt(0);
-            if (code >= 48 && code <= 57 && index < inputElements.length - 1) {
-                setTimeout(() => inputElements[index + 1].focus(), 10);
-            } else {
-                event.target.value = "";
+codes[0].focus()
+
+codes.forEach((code, idx) => {
+    code.addEventListener("keydown", (e) => {
+        console.log(e.key)
+        const keyPressed = e.key
+
+        if (keyPressed >= 0 && keyPressed <= 9) {
+            codes[idx].value = ''
+            if (idx < codes.length - 1) {
+                setTimeout(() => codes[idx + 1].focus(), 10)
+
+                // setTimeout(function(){
+                //     codes[index+1].focus()
+                // },10)
             }
-        } else if (value.length > 1) {
-            event.target.value = value.slice(0, 1); // Allow only one character
         }
-    });
-});
+        else if (keyPressed === "Backspace") {
+            if (idx > 0) {
+                setTimeout(() => codes[idx - 1].focus(), 10)
+            }
+        }
+    })
+})
