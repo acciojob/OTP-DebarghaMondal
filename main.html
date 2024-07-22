@@ -4,7 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Verification</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional: Add your CSS file here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .code-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .code {
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -21,6 +56,32 @@
         </div>
     </div>
 
-    <script src="script.js"></script> <!-- Optional: Add your JavaScript file here -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.code');
+
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', function(e) {
+                    const val = e.target.value;
+                    if (val.length === 1) {
+                        if (index < inputs.length - 1) {
+                            inputs[index + 1].focus();
+                        } else {
+                            inputs[index].blur(); // Unfocus the last input
+                        }
+                    }
+                });
+
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace') {
+                        if (index > 0) {
+                            inputs[index].value = '';
+                            inputs[index - 1].focus();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
