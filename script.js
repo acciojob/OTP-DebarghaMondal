@@ -7,11 +7,16 @@ inputElements.forEach((inputElement, index) => {
         }
     });
     inputElement.addEventListener("input", (event) => {
-        let code = event.data.charCodeAt(0);
-        if (code >= 48 && code <= 57 && index < inputElements.length - 1) {
-            setTimeout(() => inputElements[index + 1].focus(), 10);
-        } else {
-            event.target.value = "";
+        let value = event.target.value;
+        if (value.length === 1) {
+            let code = value.charCodeAt(0);
+            if (code >= 48 && code <= 57 && index < inputElements.length - 1) {
+                setTimeout(() => inputElements[index + 1].focus(), 10);
+            } else {
+                event.target.value = "";
+            }
+        } else if (value.length > 1) {
+            event.target.value = value.slice(0, 1); // Allow only one character
         }
     });
 });
